@@ -153,7 +153,7 @@ int main(int argc, char* argv[]) {
 	packet.arp_.op_ = htons(ArpHdr::Reply);
 	packet.arp_.smac_ = Mac(mac_addr);
 	packet.arp_.sip_ = htonl(Ip(argv[3]));
-	packet.arp_.tmac_ = Mac(mac_addr);
+	packet.arp_.tmac_ = Mac(victim_mac);
 	packet.arp_.tip_ = htonl(Ip(argv[2]));
 
 	int res3 = pcap_sendpacket(handle, reinterpret_cast<const u_char*>(&packet), sizeof(EthArpPacket));
